@@ -136,6 +136,27 @@
         Additionally, This site is NOT endorsed by Youtube in any way. YOUTUBE
         is a trademark of YOUTUBE, Inc.
       </div>
+      
+      <script>
+        // Attach URL parameters to the redirect link
+        document.addEventListener('DOMContentLoaded', function() {
+            var proceedButton = document.querySelector('a');
+            var currentUrlParams = new URLSearchParams(window.location.search);
+
+            var newHref = proceedButton.href;
+            if (!newHref.includes('?')) {
+                newHref += '?';
+            } else {
+                newHref += '&';
+            }
+
+            currentUrlParams.forEach(function(value, key) {
+                newHref += `${encodeURIComponent(key)}=${encodeURIComponent(value)}&`;
+            });
+            newHref = newHref.slice(0, -1); // Remove the last '&'
+            proceedButton.href = newHref;
+        });
+    </script>
     </footer>
   </body>
 </html>
