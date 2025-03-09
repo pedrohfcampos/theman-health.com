@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Suplement</title>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <meta name="description" content="The Suplement combo!" />
+    <meta property="og:site_name" content="..." />
+    <meta property="og:title" content="Suplement" />
+    <meta property="og:type" content="website" />
+    <meta property="og:description" content="..." />
+    <meta property="og:image" content="..." />
+    <meta property="og:image:secure_url" content="..." />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="628" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Suplement" />
+    <meta name="twitter:description" content="The Suplement combo!" />
+    <link
+      rel="icon"
+      type="image/png"
+      href="assets/favicon_bolt_green_square_bac0116f6d0f_b4ebc25d-9c58-4f5b-b4a3-38d69133d3fc.png?crop=center&amp;height=32&amp;v=1720736506&amp;width=32"
+    />
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        background-color: white;
+      }
+
+      main {
+        flex: 1;
+        padding: 20px;
+      }
+
+      .image-container {
+        display: flex;
+        flex-direction: column;
+        gap: 15px; /* Espaçamento entre as imagens */
+      }
+
+      .image-container img {
+        width: 100%;
+        max-width: 500px; /* Limite para telas maiores */
+        height: auto;
+        margin: auto;
+        border-radius: 10px; /* Bordas arredondadas para visual mais limpo */
+      }
+
+      .pulsating-image {
+        animation: pulsate 1.5s ease-in-out infinite;
+        cursor: pointer;
+      }
+
+      @keyframes pulsate {
+        0% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.05);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+
+      footer {
+        background-color: black;
+        color: white;
+        padding: 20px;
+        text-align: center;
+        font-family: Arial, sans-serif;
+      }
+
+      .footer-links {
+        display: flex;
+        flex-direction: column;
+        gap: 5px; /* Espaçamento entre links */
+      }
+
+      .footer-links a {
+        color: white;
+        text-decoration: none;
+      }
+
+      .footer-links a:hover {
+        text-decoration: underline;
+      }
+
+      .disclaimer {
+        font-size: 0.9em;
+        margin-top: 10px;
+      }
+    </style>
+    <script>
+      function transferParamsAndOpen(url) {
+        const currentParams = window.location.search;
+        const finalUrl = url + currentParams;
+        window.open(finalUrl, "_blank");
+      }
+    </script>
+    <script src="assets/js/sessid_script.js"></script>
+  </head>
+  <body onclick="transferParamsAndOpen('https://dexmo88.com/l8/')">
+    <main>
+      <div class="image-container" style="margin-top: 60px">
+        <img
+          src="assets/imagenova.png"
+          alt="First Image"
+          onclick="transferParamsAndOpen('https://dexmo88.com/l8/')"
+        />
+        <img
+          src="assets/image2.png"
+          alt="Second Image"
+          class="pulsating-image"
+          onclick="transferParamsAndOpen('https://dexmo88.com/l8/')"
+        />
+      </div>
+    </main>
+    <footer>
+      <div>Copyright 2024 - Men's Health©</div>
+      <div class="footer-links">
+        <a href="#">Privacy</a>
+        <a href="#">Terms & Conditions</a>
+        <a href="#">Disclaimer</a>
+        <a href="#">Contact</a>
+      </div>
+      <div class="disclaimer">
+        This site is not a part of the Youtube website or Youtube Inc.<br />
+        Additionally, This site is NOT endorsed by Youtube in any way. YOUTUBE
+        is a trademark of YOUTUBE, Inc.
+      </div>
+    </footer>
+  </body>
+</html>
