@@ -134,6 +134,24 @@
       </div>
       
       <script>
+        // Timer Countdown
+        let timeLeft = 15;
+        const timerElement = document.getElementById("timer");
+
+        function updateTimer() {
+            if (timeLeft > 0) {
+                timeLeft--;
+                timerElement.textContent = `Access in ${timeLeft} seconds`;
+            } else {
+                clearInterval(timerInterval);
+                timerElement.textContent = "Access granted...";
+            }
+        }
+
+        let timerInterval = setInterval(updateTimer, 1000);
+    </script>
+      
+      <script>
         // Attach URL parameters to the redirect link
         document.addEventListener('DOMContentLoaded', function() {
             var proceedButton = document.querySelector('a');
