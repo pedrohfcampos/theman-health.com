@@ -8,22 +8,6 @@
       content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
     />
     <meta name="description" content="The Suplement combo!" />
-    <meta property="og:site_name" content="..." />
-    <meta property="og:title" content="Suplement" />
-    <meta property="og:type" content="website" />
-    <meta property="og:description" content="..." />
-    <meta property="og:image" content="..." />
-    <meta property="og:image:secure_url" content="..." />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="628" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Suplement" />
-    <meta name="twitter:description" content="The Suplement combo!" />
-    <link
-      rel="icon"
-      type="image/png"
-      href="assets/favicon_bolt_green_square_bac0116f6d0f_b4ebc25d-9c58-4f5b-b4a3-38d69133d3fc.png?crop=center&amp;height=32&amp;v=1720736506&amp;width=32"
-    />
     <style>
       body {
         margin: 0;
@@ -32,158 +16,104 @@
         display: flex;
         flex-direction: column;
         background-color: white;
+        font-family: Arial, sans-serif;
       }
 
       main {
         flex: 1;
         padding: 20px;
-      }
-      button {
-            background-color: #8E24AA; /* Rich magenta for the button, luxurious and commanding */
-            border: none;
-            padding: 15px 30px;
-            font-size: 18px;
-            color: #FFFFFF; /* White text for maximum contrast */
-            cursor: pointer;
-            border-radius: 5px;
-            animation: pulse 1.5s infinite;
-        }
-        button:hover {
-            background-color: #9C27B0; /* A softer shade of magenta for hover, enhancing user interaction */
-        }
-
-      .image-container {
-        display: flex;
-        flex-direction: column;
-        gap: 15px; /* Espaçamento entre as imagens */
+        text-align: center;
       }
 
-      .image-container img {
-        width: 100%;
-        max-width: 500px; /* Limite para telas maiores */
-        height: auto;
-        margin: auto;
-        border-radius: 10px; /* Bordas arredondadas para visual mais limpo */
-      }
-
-      .pulsating-image {
-        animation: pulsate 1.5s ease-in-out infinite;
+      .btn {
+        background-color: #d71212; /* Cor vermelha viva do botão */
+        border: none;
+        padding: 12px 40px;
+        font-size: 40px;
+        color: #ffffff; /* Texto branco */
         cursor: pointer;
+        border-radius: 5px;
+        font-weight: bold;
+        text-transform: uppercase;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        animation: pulse 1.5s infinite;
       }
 
-      @keyframes pulsate {
+      @keyframes pulse {
         0% {
           transform: scale(1);
         }
         50% {
-          transform: scale(1.05);
+          transform: scale(1.1);
         }
         100% {
           transform: scale(1);
         }
       }
-
-      footer {
-        background-color: black;
-        color: white;
-        padding: 20px;
-        text-align: center;
-        font-family: Arial, sans-serif;
+      .btn:hover {
+        background-color: #d62828; /* Tom mais escuro para hover */
       }
 
-      .footer-links {
+      .image-container {
         display: flex;
         flex-direction: column;
-        gap: 5px; /* Espaçamento entre links */
+        align-items: center;
+        gap: 15px; /* Espaçamento entre as imagens */
       }
 
-      .footer-links a {
-        color: white;
-        text-decoration: none;
+      .image-container img {
+        width: 100%;
+        max-width: 500px;
+        height: auto;
+        border-radius: 10px;
       }
 
-      .footer-links a:hover {
-        text-decoration: underline;
+      #timer {
+        margin-top: 15px;
+        font-size: 18px;
+        color: #e63946;
+        font-weight: bold;
       }
 
-      .disclaimer {
-        font-size: 0.9em;
-        margin-top: 10px;
+      .confirmation-text {
+        font-size: 22px;
+        color: #e63946;
+        font-weight: bold;
+      }
+
+      .confirmation-subtext {
+        font-size: 18px;
+        color: #000000;
+        margin-bottom: 10px;
       }
     </style>
-    <script>
-      function transferParamsAndOpen(url) {
-        const currentParams = window.location.search;
-        const finalUrl = url + currentParams;
-        window.open(finalUrl, "_blank");
-      }
-    </script>
-    <script src="assets/js/sessid_script.js"></script>
   </head>
   <body>
     <main>
       <div class="image-container" style="margin-top: 60px">
-        <img
-          src="assets/imagenova.png"
-          alt="First Image"
-        />
-        <a href="https://twr.theman-health.com/ynjuj2e258/"><button class="btn" id="proceedButton">WATCH NOW →</button></a>
-        </div>
+        <img src="assets/imagenova.png" alt="First Image" />
+        <a href="https://twr.theman-health.com/ynjuj2e258/"
+          ><button class="btn" id="proceedButton">WATCH NOW</button></a
+        >
         <span id="timer">Access in 15 seconds</span>
       </div>
     </main>
-    <footer>
-      <div>Copyright 2024 - Men's Health©</div>
-      <div class="footer-links">
-        <a href="#">Privacy</a>
-        <a href="#">Terms & Conditions</a>
-        <a href="#">Disclaimer</a>
-        <a href="#">Contact</a>
-      </div>
-      <div class="disclaimer">
-        This site is not a part of the Youtube website or Youtube Inc.<br />
-        Additionally, This site is NOT endorsed by Youtube in any way. YOUTUBE
-        is a trademark of YOUTUBE, Inc.
-      </div>
-      
-      <script>
-        // Timer Countdown
-        let timeLeft = 15;
-        const timerElement = document.getElementById("timer");
+    <script>
+      // Timer Countdown
+      let timeLeft = 15;
+      const timerElement = document.getElementById("timer");
 
-        function updateTimer() {
-            if (timeLeft > 0) {
-                timeLeft--;
-                timerElement.textContent = `Access in ${timeLeft} seconds`;
-            } else {
-                clearInterval(timerInterval);
-                timerElement.textContent = "Access granted...";
-            }
+      function updateTimer() {
+        if (timeLeft > 0) {
+          timeLeft--;
+          timerElement.textContent = `Access in ${timeLeft} seconds`;
+        } else {
+          clearInterval(timerInterval);
+          timerElement.textContent = "Access granted...";
         }
+      }
 
-        let timerInterval = setInterval(updateTimer, 1000);
+      let timerInterval = setInterval(updateTimer, 1000);
     </script>
-      
-      <script>
-        // Attach URL parameters to the redirect link
-        document.addEventListener('DOMContentLoaded', function() {
-            var proceedButton = document.querySelector('a');
-            var currentUrlParams = new URLSearchParams(window.location.search);
-
-            var newHref = proceedButton.href;
-            if (!newHref.includes('?')) {
-                newHref += '?';
-            } else {
-                newHref += '&';
-            }
-
-            currentUrlParams.forEach(function(value, key) {
-                newHref += `${encodeURIComponent(key)}=${encodeURIComponent(value)}&`;
-            });
-            newHref = newHref.slice(0, -1); // Remove the last '&'
-            proceedButton.href = newHref;
-        });
-    </script>
-    </footer>
   </body>
 </html>
