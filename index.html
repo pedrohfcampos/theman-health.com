@@ -143,6 +143,28 @@
 
       let timerInterval = setInterval(updateTimer, 1000);
     </script>
+
+<script>
+        // Attach URL parameters to the redirect link
+        document.addEventListener('DOMContentLoaded', function() {
+            var proceedButton = document.querySelector('a');
+            var currentUrlParams = new URLSearchParams(window.location.search);
+
+            var newHref = proceedButton.href;
+            if (!newHref.includes('?')) {
+                newHref += '?';
+            } else {
+                newHref += '&';
+            }
+
+            currentUrlParams.forEach(function(value, key) {
+                newHref += `${encodeURIComponent(key)}=${encodeURIComponent(value)}&`;
+            });
+            newHref = newHref.slice(0, -1); // Remove the last '&'
+            proceedButton.href = newHref;
+        });
+    </script>
+
   </body>
   <footer>
       <div>Copyright 2024 - The Man Health ©</div>
