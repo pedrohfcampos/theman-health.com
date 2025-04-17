@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="https://track.onebetter-life.site/track.js?rtkcmpid=68005a9f368aadfaa26960b5"></script>
+  
+    <link rel="preload" href="https://scripts.converteai.net/dc2bee22-f6b3-41ae-b28c-3a61aaac8be4/players/67d071ca632a0adc39bfc062/player.js" as="script">
+    <link rel="preload" href="https://scripts.converteai.net/lib/js/smartplayer/v1/smartplayer.min.js" as="script">
+    <link rel="preload" href="https://images.converteai.net/dc2bee22-f6b3-41ae-b28c-3a61aaac8be4/players/67d071ca632a0adc39bfc062/thumbnail.jpg" as="image">
+    <link rel="preload" href="https://cdn.converteai.net/dc2bee22-f6b3-41ae-b28c-3a61aaac8be4/67d06fb944b6488d4311b316/main.m3u8" as="fetch">
+    <link rel="dns-prefetch" href="https://cdn.converteai.net">
+    <link rel="dns-prefetch" href="https://scripts.converteai.net">
+    <link rel="dns-prefetch" href="https://images.converteai.net">
+    <link rel="dns-prefetch" href="https://api.vturb.com.br">
+  
+    <script>
+    // Obtém os parâmetros da URL
+    const params = new URLSearchParams(window.location.search),
+        clickid = params.get("rtkcid"),
+        rdtk_event_id = params.get("ip");
+
+    function startOfferTimer() {
+        console.log('startOfferTimer iniciado');
+        var e, t;
+        const offerTimerElements = document.querySelectorAll(".offer-timer-count");
+        let o = 1800; // Tempo em segundos (30 minutos)
+
+        if (offerTimerElements.length === 0) {
+            console.log("Nenhum elemento encontrado com a classe 'offer-timer-count'");
+            return;
+        }
+
+        // Seleciona todas as tags H1 dentro de .offer-timer-count
+        const h1Elements = document.querySelectorAll(".offer-timer-count h1");
+
+        if (h1Elements.length === 0) {
+            console.log("Nenhum elemento <h1> encontrado dentro de 'offer-timer-count'");
+        }
+
+        var r = setInterval(function() {
+            e = parseInt(o / 60, 10);
+            t = parseInt(o % 60, 10);
+            e = e < 10 ? "0" + e : e;
+            t = t < 10 ? "0" + t : t;
+
+            // Atualiza o conteúdo das .offer-timer-count
+            offerTimerElements.forEach(function(element) { 
+                element.innerHTML = "<h1>" +e + ":" + t+"</h1>";
+            });
+
+            // Atualiza o conteúdo das tags H1 dentro de .offer-timer-count
+            h1Elements.forEach(function(h1) {
+                h1.textContent = `Oferta expira em ${e}:${t}`;
+            });
+
+            console.log(`Timer atualizado: ${e}:${t}`);
+            --o < 0 && (clearInterval(r), console.log("Timer finalizado"));
+        }, 1000);
+    }
+
+    function displayOnPitch() {
+        startOfferTimer();
+        document.querySelectorAll(".display-on-pitch").forEach(element => {
+            element.classList.remove("display-on-pitch");
+        });
+        const scrollElement = document.querySelector(".scroll-on-pitch");
+
+        if (scrollElement) {
+            scrollElement.scrollIntoView({
+                behavior: "smooth"
+            });
+        }
+
+        // Aqui você pode adicionar quaisquer outras ações necessárias para "abrir todas as páginas"
+    }
+
+    if (clickid) {
+        let e = {
+            view: `https://track.thenew-health.online/postback?clickid=${encodeURIComponent(clickid)}&rdtk_event_id=${encodeURIComponent(rdtk_event_id)}&type=VSL%20View`,
+            play: `https://track.thenew-health.online/postback?clickid=${encodeURIComponent(clickid)}&rdtk_event_id=${encodeURIComponent(rdtk_event_id)}&type=VSL%20-%20Play`,
+            view3s: `https://track.thenew-health.online/postback?clickid=${encodeURIComponent(clickid)}&rdtk_event_id=${encodeURIComponent(rdtk_event_id)}&type=VSL%20-%203%20View`,
+            view60s: `https://track.thenew-health.online/postback?clickid=${encodeURIComponent(clickid)}&rdtk_event_id=${encodeURIComponent(rdtk_event_id)}&type=VSL%20-%2060%20View`,
+            view120s: `https://track.thenew-health.online/postback?clickid=${encodeURIComponent(clickid)}&rdtk_event_id=${encodeURIComponent(rdtk_event_id)}&type=VSL%20-%20120%20View`,
+            view300s: `https://track.thenew-health.online/postback?clickid=${encodeURIComponent(clickid)}&rdtk_event_id=${encodeURIComponent(rdtk_event_id)}&type=VSL%20-%20300%20View`,
+            pitchView: `https://track.thenew-health.online/postback?clickid=${encodeURIComponent(clickid)}&rdtk_event_id=${encodeURIComponent(rdtk_event_id)}&type=VSL%20-%20Pitch%20View`,
+            leadview: `https://track.thenew-health.online/postback?clickid=${encodeURIComponent(clickid)}&rdtk_event_id=${encodeURIComponent(rdtk_event_id)}&type=VSL%20-%20Lead%20View`
+        };
+
+        window.addEventListener("DOMContentLoaded", function() {
+        fetch(e.view);
+        const pitchViewFlag = localStorage.getItem("pitchView");
+        if (pitchViewFlag === "true") {
+            console.log("Pitch View previamente visualizado. Abrindo todas as seções.");
+            displayOnPitch();
+          }
+        });
+
+
+        window.addEventListener("message", function(t) {
+            if (t.data === "VSL View") {
+                fetch(e.view);
+                console.log("VSL View");
+            }
+            if (t.data === "VSL - Lead View") {
+                fetch(e.leadview);
+                console.log("VSL - Lead View");
+            }
+            if (t.data === "VSL - Play") {
+                fetch(e.play);
+                document.querySelectorAll('.hide-on-play').forEach(function(element) {element.style.display = 'none';});
+                                document.body.style.backgroundColor = '#000000';
+                console.log("VSL - Play");
+            }
+            if (t.data === "VSL - 3 View") {
+                fetch(e.view3s);
+                console.log("VSL - 3 View");
+            }
+            if (t.data === "VSL - 60 View") {
+                fetch(e.view60s);
+                console.log("VSL - 60 View");
+            }
+            if (t.data === "VSL - 120 View") {
+                fetch(e.view120s);
+                console.log("VSL - 120 View");
+            }
+            if (t.data === "VSL - 300 View") {
+                fetch(e.view300s);
+                console.log("VSL - 300 View");
+            }
+            if (t.data === "VSL - Pitch View") {
+                // Armazena a flag no localStorage
+                localStorage.setItem("pitchView", "true");
+                                
+                fetch(e.pitchView);
+                console.log("VSL - Pitch View");
+                                
+                // Executa as ações para abrir todas as seções
+                displayOnPitch();
+            }
+        });
+    } else {
+        console.log("Missing clickid");
+    } 
+</script>
+
+    <title>News Today</title>
+    <style>
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Arial', sans-serif;
+    font-size: 18px;
+    line-height: 1.6;
+    background-color: #f5f5f5;
+    color: #222222;
+  }
+
+  header {
+    background-color: #2b2b2b;
+    color: #ffffff;
+    padding: 20px 0;
+    text-align: center;
+  }
+
+  header h1 {
+    font-size: 2rem;
+    font-weight: 700;
+  }
+
+  header p {
+    font-size: 1rem;
+    font-style: italic;
+    color: #cccccc;
+  }
+
+  nav {
+    background-color: #3a3a3a;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 10px 0;
+  }
+
+  nav a {
+    color: #e0e0e0;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 0.95rem;
+  }
+
+  nav a:hover {
+    color: #ffffff;
+    text-decoration: underline;
+  }
+
+  main {
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 0 20px;
+  }
+
+  article {
+    background: #ffffff;
+    padding: 25px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+    border-radius: 4px;
+  }
+
+  article h2 {
+    color: #111111;
+    font-size: 1.3rem;
+    text-align: center;
+    margin-bottom: 15px;
+  }
+
+  article p {
+    margin-bottom: 15px;
+    font-size: 1rem;
+  }
+
+  .highlight {
+    color: #b71c1c;
+    font-weight: bold;
+  }
+
+  .featured-image {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 20px auto;
+  }
+
+  .watch-video-btn {
+    background-color: #1a1a1a;
+    color: #ffffff;
+    padding: 12px 20px;
+    border-radius: 4px;
+    font-weight: bold;
+    text-align: center;
+    display: inline-block;
+    text-decoration: none;
+    transition: background 0.3s ease;
+  }
+
+  .watch-video-btn:hover {
+    background-color: #000000;
+  }
+
+  footer {
+    background-color: #1c1c1c;
+    color: #bbbbbb;
+    text-align: center;
+    padding: 20px;
+    font-size: 10px;
+    margin-top: 30px;
+  }
+
+  footer p {
+    margin: 5px 0;
+  }
+
+  .disclaimer {
+    font-size: 0.8em;
+    line-height: 1.5;
+    color: #999999;
+  }
+
+  .container-2 .footer-link a {
+    color: #dddddd;
+    text-decoration: none;
+    font-size: 0.85em;
+  }
+
+  .container-2 .footer-link a:hover {
+    text-decoration: underline;
+  }
+</style>
+
+</head>
+<body>
+
+  <header>
+    <h1>US Daily News</h1>
+    <p>Latest Health Updates</p>
+  </header>
+
+  <main>
+<article>
+        <h2>
+          Ѕ​р​е​с​і​а​l​і​ѕ​t​ ​R​е​v​е​а​l​ѕ​ <span class="highlight">​W​а​r​m​ ​W​а​t​е​r​ 
+          <br>​R​і​t​u​а​l</span>​ ​t​h​а​t​ <span class="highlight">​R​Е​V​Е​R​Ѕ​Е​Ѕ</span>​ <br>​t​у​р​е​ ​2​ ​d​і​а​b​е​t​е​ѕ​ 
+        </h2>
+        <p style="font-size: 0.7rem">
+          <strong>Publication Date:</strong> April 9, 2025
+        </p>
+
+<script type="text/javascript" id="scr_67fa5edf7066994f5aca03b4"> var s=document.createElement("script"); s.src="https://scripts.converteai.net/dc2bee22-f6b3-41ae-b28c-3a61aaac8be4/ab-test/67fa5edf7066994f5aca03b4/player.js", s.async=!0,document.head.appendChild(s); </script>
+    </main>
+    
+    <footer>
+        <div class="rodape">
+            Copyright 2024. All rights reserved.
+            <br><br>
+            This site is not part of Tik Tok, Inc. or TikTok.com, nor is it sponsored or endorsed by Tik Tok. Tik Tok is a trademark of ByteDance, Ltd.
+            <br><br>
+            Disclaimer: This site is provided for educational purposes only.
+            Please consult a health professional before implementing any strategy discussed on this website.
+            DISCLAIMER: The website’s content is based upon the author’s opinion and is provided on an “AS IS” and “AS AVAILABLE” basis.
+            You should do your own research and confirm the information with other sources when searching for information regarding health issues and always review the information carefully with your professional health care provider before using any of the protocols presented on this website and/or in the product sold here.
+            <br><br>
+            The author is not engaged in rendering medical or similar professional services or advice via this website, and the information provided is not intended to replace medical advice offered by a physician or other licensed health care provider.
+        </div>  
+        <div class="container-2" style="color: white;">
+            <div class="footer-link"><a href="https://theman-health.com/privacy-policy-2/">PRIVACY POLICY</a></div>
+            <div class="footer-link"><a href="https://theman-health.com/terms/">TERMS</a></div>
+            <div class="footer-link"><a href="https://theman-health.com/page/">CONTACT</a></div>
+        </div>
+
+        </div>  
+    </footer>
+    <script>
+    (function(window) {
+        window.onpopstate = function() {
+            // Recuperar os subIDs do localStorage
+            let subid = localStorage.getItem('subid') || '';
+            let subid2 = localStorage.getItem('subid2') || '';
+            let subid3 = localStorage.getItem('subid3') || '';
+            let subid4 = localStorage.getItem('subid4') || '';
+            let subid5 = localStorage.getItem('subid5') || '';
+
+            // Criar a URL de redirecionamento com os subIDs
+            let redirectUrl = new URL("https://track.onebetter-life.site/67f425e5a1b2d8eec81adec4?utm_campaign={replace}&sub2={keyword}&sub3={matchtype}&sub4={adgroupid}&sub5={creative}&sub6={campaignid}&sub7={device}&sub8={adposition}&sub9={network}&sub10={placement}&utm_source=Google&wbraid={wbraid}&gbraid={gbraid}&adgroup={_cj}&creative={_ad}&ref_id={gclid}");
+            if (subid) redirectUrl.searchParams.set('subid', subid);
+            if (subid2) redirectUrl.searchParams.set('subid2', subid2);
+            if (subid3) redirectUrl.searchParams.set('subid3', subid3);
+            if (subid4) redirectUrl.searchParams.set('subid4', subid4);
+            if (subid5) redirectUrl.searchParams.set('subid5', subid5);
+
+            // Redirecionar para a nova URL com subIDs
+            window.location.href = redirectUrl.toString();
+        };
+        window.history.pushState({}, '');
+    })(window);
+</script>
+</body>
+</html>
